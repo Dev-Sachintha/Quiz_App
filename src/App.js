@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.jsx
+
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header'; // <-- 1. Import the component
+import Home from './pages/Home';
+import Quiz from './pages/Quiz';
+import Score from './pages/Score';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <Header /> {/* <-- 2. Use the component like an HTML tag */}
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/score" element={<Score />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
